@@ -1,0 +1,4 @@
+Str.1: Need to work on the structure of the string
+Key.1: Test and/or figure out how to execute...
+    .E: Enter key
+    .S: Spacebar
