@@ -8,5 +8,7 @@ describe("Testing the availability section of the filter function",()=>{
         await Searchbar.clickSearch('Ghost Rider');
         await Searchbar.clickMagnifyingGlass();
         await Searchbar.resultsReturn0('Ghost Rider');
+        await AvailabilityFilter.clickAvailability();
+        await AvailabilityFilter.executeAllAvailabilityCombinations();
     })
 })

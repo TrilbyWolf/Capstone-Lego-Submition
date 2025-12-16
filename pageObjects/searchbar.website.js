@@ -10,7 +10,7 @@ class SearchBar extends Website {
         return $('input+button');
     }
     get results(){
-        return $('span[class*="SearchResults"]');
+        return $('span[class*="SearchResults"] span');
     }
     get xClearButton(){
         return $('button[data-test="close-search"]');
@@ -33,7 +33,10 @@ class SearchBar extends Website {
     async resultsReturn0(input){
         await expect(this.results).toBeExisting();
         ////Problem Str.1
-        //await expect(this.results).toHaveText(expect.stringContaining("Search results for ""+input+"""));
+        await expect(this.results).toHaveText(expect.stringContaining(input));
+    }
+    async resultsReturn0_2(input){
+        await expect(this.results).toBeExisting();
     }
     async clickXClear(){
         await this.xClearButton.click();
@@ -49,9 +52,9 @@ class SearchBar extends Website {
     async keepSearchingReturn1half(input){
         await expect(this.keepSearching).toBeExisting()
         //Problem Str.1
-        //await expect(this.keepSearching).toHaveText(expect.stringContaining("Oops, we couldn't find anything for""+input+"", but don't give up"));
+        await expect(this.keepSearching).toHaveText(expect.stringContaining('Oops, we couldn'+"'"+'t find anything for'+input+', but don'+"'"+'t give up'));
     }
-    async errorReturn0(input){
+    async errorReturn1(input){
         await expect(this.error).toBeExisting();
         await expect(this.error).toHaveText(expect.stringContaining("Page Not Found"));
     }
