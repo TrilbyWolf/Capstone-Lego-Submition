@@ -43,11 +43,11 @@ class SearchBar extends Website {
     }
     async clickEnterKey(){
         //Problem Key.1.E
-        //await browser.keys([Key.Ctrl,'Enter']);
+        await browser.keys('Enter');
     }
     async clickSpaceBar(){
         //Problem Key.1.S
-        //await browser.keys([Key.Ctrl,'Space']);
+        await browser.keys('Space');
     }
     async keepSearchingReturn1half(input){
         await expect(this.keepSearching).toBeExisting()

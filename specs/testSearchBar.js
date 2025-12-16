@@ -12,13 +12,11 @@ describe("Testing the search bar",()=>{
         await SearchBar.clickSearch(input[1]);
         await SearchBar.clickXClear();
         await SearchBar.clickSearch(input[2]);
-        await SearchBar.clickMagnifyingGlass();
-        ///await SearchBar.clickEnterKey();
+        await SearchBar.clickEnterKey();
         await SearchBar.resultsReturn0(input[2]);
         for(let cycleThroughChars=33;cycleThroughChars<127;cycleThroughChars++){
             await SearchBar.clickSearch(String.fromCharCode(cycleThroughChars));
-            //await SearchBar.clickEnterKey();
-            await SearchBar.clickMagnifyingGlass();
+            await SearchBar.clickEnterKey();
         }
         let characterBuild='';
         let step=0
@@ -26,21 +24,20 @@ describe("Testing the search bar",()=>{
             characterBuild=characterBuild+'aaaaa';
             console.log('Current Build: '+characterBuild);
             await SearchBar.clickSearch(characterBuild);
-            await SearchBar.clickMagnifyingGlass();
+            await SearchBar.clickEnterKey();
             await SearchBar.resultsReturn0_2(characterBuild);
             console.log('Executed');
             console.log('Boolean: '+characterBuild==await SearchBar.results.getText());
             step++;
         }while(step<20);
 
-        await SearchBar.clickSearch(' ');
-        ///await SearchBar.clickSpaceBar();
-        //await SearchBar.clickEnterKey();
-        await SearchBar.clickMagnifyingGlass();
+        await SearchBar.clickSearchBar();
+        await SearchBar.clickSpaceBar();
+        await SearchBar.clickEnterKey();
         await SearchBar.errorReturn1();
         const code='public class Main {public static void main(String[] args) {System.out.println("LegoBuilder4ver");}}';
         await SearchBar.clickSearch(code);
-        await SearchBar.clickMagnifyingGlass();
+        await SearchBar.clickEnterKey();
         await SearchBar.resultsReturn0(code);
     })
 })
