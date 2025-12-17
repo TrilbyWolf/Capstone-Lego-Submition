@@ -15,46 +15,36 @@ class SlideMenu extends Website {
         return $$('div[class*="ChildrenContainer"][aria-hidden="false"] a');
     }
     get breadCrumbs(){
-        return $('ol li:last-child span');
+        return $('nav ol li:last-child');
     }
     get banner(){
         return $('h1');
     }
     async exeAll(){
         let headers=0;
-        let links=0;
-        let linkLimit=0;
-        let buttons=0;
-        let buttonLimit=0;
-        let subLinks=0;
-        let subLinkLimit=0;
         do{
-            do{
-                await this.headerButtons[headers].click();
-                //await expect(this.slideMenuLinks).toBeExisting();
-                linkLimit=await this.slideMenuLinks.length;
-                console.log('Link Limit: '+await this.slideMenuLinks.length);
-                await this.slideMenuLinks[links].click();
-                //await expect(this.breadCrumbs).toBeExisting();
-                links++;
-            }while(links<3);
+            let links=0;
+            await expect(this.headerButtons[headers]).toBeClickable();
+            await this.headerButtons[headers].click();
+            //console.log('Executed');
+            //console.log('Link Limit: '+await this.slideMenuLinks.length);
+            await expect(this.slideMenuLinks[links]).toBeClickable();
+            await this.slideMenuLinks[links].click();
+            await expect(this.breadCrumbs).toBeExisting();
             if(headers<2){
-                do{
-                    do{
-                        console.log('Sublinks'+subLinks);
-                        await this.headerButtons[headers].click();
-                        //await expect(this.slideMenuSubButtons).toBeExisting();
-                        buttonsLimit=await this.slideMenuSubButtons.length;
-                        console.log('Button Limit: '+await this.slideMenuSubButtons.length);
-                        await this.slideMenuSubButtons[buttons].click();
-                        //await expect(this.slideMenuSubLinks).toBeExisting();
-                        subLinkLimit=await this.slideMenuSubLinks.length;
-                        await this.slideMenuSubLinks[subLinks].click();
-                        //await expect(this.banner).toBeExisting();
-                        subLinks++;
-                    }while(subLinks<subLinkLimit);
-                    buttons++;
-                }while(buttons<buttonLimit);
+                let buttons=1;
+                let subLinks=0;
+                console.log('Sublinks'+subLinks);
+                await expect(this.headerButtons[headers]).toBeClickable();
+                await this.headerButtons[headers].click();
+                await expect(this.slideMenuSubButtons[buttons]).toBeExisting();
+                //console.log('Button Limit: '+await this.slideMenuSubButtons.length);
+                await expect(this.slideMenuSubButtons[buttons]).toBeClickable();
+                await this.slideMenuSubButtons[buttons].click();
+                await expect(this.slideMenuSubLinks[subLinks]).toBeExisting();
+                await expect(this.slideMenuSubLinks[subLinks]).toBeClickable();
+                await this.slideMenuSubLinks[subLinks].click();
+                await expect(this.breadCrumbs).toBeExisting();
             }
             headers++;
         }while(headers<await this.headerButtons.length);

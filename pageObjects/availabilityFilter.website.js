@@ -26,6 +26,7 @@ class AvailabilityFilter extends Website {
         }
     }
     async executingCombinationRoute(selected){
+        //console.log(await this.availabilityOptions.isExisting());
         console.log('Selecting Option Index: '+await selected);
         if(selected<await this.availabilityOptions.length-1){
             for(let afterSelected=selected+1;afterSelected<await this.availabilityOptions.length;afterSelected++){
