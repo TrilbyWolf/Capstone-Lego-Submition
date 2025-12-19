@@ -26,8 +26,6 @@ class SlideMenu extends Website {
             for(let links=0;links<7;links++){
                 await expect(this.headerButtons[headers]).toBeClickable();
                 await this.headerButtons[headers].click();
-                //console.log('Executed');
-                //console.log('Link Limit: '+await this.slideMenuLinks.length);
                 await expect(this.slideMenuLinks[links]).toBeClickable();
                 await this.slideMenuLinks[links].click();
                 await expect(this.breadCrumbs).toBeExisting();
@@ -37,11 +35,9 @@ class SlideMenu extends Website {
                 do{
                     let subLinks=0;
                     do{
-                        console.log('Sublinks'+subLinks);
                         await expect(this.headerButtons[headers]).toBeClickable();
                         await this.headerButtons[headers].click();
                         await expect(this.slideMenuSubButtons[buttons]).toBeExisting();
-                        //console.log('Button Limit: '+await this.slideMenuSubButtons.length);
                         await expect(this.slideMenuSubButtons[buttons]).toBeClickable();
                         await this.slideMenuSubButtons[buttons].click();
                         await expect(this.slideMenuSubLinks[subLinks]).toBeExisting();
@@ -55,7 +51,6 @@ class SlideMenu extends Website {
                             await expect(this.pokemonBanner).toBeExisting();
                         }
                         subLinks++;
-                        console.log('Slide Menu Length: '+await this.slideMenuLinks.length);
                     }while(subLinks<await this.slideMenuSubLinks.length);
                     buttons++;
                 }while(buttons<await this.slideMenuSubButtons.length);
@@ -66,8 +61,6 @@ class SlideMenu extends Website {
     async clickLink(headers,links){
         await expect(this.headerButtons[headers]).toBeClickable();
         await this.headerButtons[headers].click();
-        //console.log('Executed');
-        //console.log('Link Limit: '+await this.slideMenuLinks.length);
         await expect(this.slideMenuLinks[links]).toBeClickable();
         await this.slideMenuLinks[links].click();
         if(headers<2||links<5){
@@ -78,11 +71,9 @@ class SlideMenu extends Website {
         
     }
     async clickSubLink(headers,buttons,subLinks){
-        console.log('Sublinks'+subLinks);
         await expect(this.headerButtons[headers]).toBeClickable();
         await this.headerButtons[headers].click();
         await expect(this.slideMenuSubButtons[buttons]).toBeExisting();
-        //console.log('Button Limit: '+await this.slideMenuSubButtons.length);
         await expect(this.slideMenuSubButtons[buttons]).toBeClickable();
         await this.slideMenuSubButtons[buttons].click();
         await expect(this.slideMenuSubLinks[subLinks]).toBeExisting();
@@ -94,7 +85,6 @@ class SlideMenu extends Website {
             await expect(this.banner).toBeExisting();
         }
         subLinks++;
-        console.log('Slide Menu Length: '+await this.slideMenuLinks.length);
     }
 }
 export default new SlideMenu();

@@ -13,7 +13,6 @@ class MainPage extends Website {
         return super.open('');
     }
     async bypassGates(){
-        //console.log("[Wolf]- Exe Code(100.1)");
         await this.ageGateAdultButton.click();
         await this.stateGateRejectButton.click();
     }

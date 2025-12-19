@@ -22,9 +22,9 @@ export const config = {
     //
     specs: [
         // ToDo: define location for spec files here
-        './specs/testSearchBar.js',
-        './specs/testSlideMenu.js',
-        './specs/testAvailability.js'
+        './specs/**',
+        //'./specs/testSlideMenu.js',
+        //'./specs/testAvailability.js'
     ],
     // Patterns to exclude.
     exclude: [
@@ -132,7 +132,7 @@ export const config = {
     // See the full list at http://mochajs.org/
     mochaOpts: {
         ui: 'bdd',
-        timeout: 60000
+        timeout: 120000
     },
 
     //

@@ -13,7 +13,6 @@ class AvailabilityFilter extends Website {
     }
     async clickAvailability(){
         await this.availabilityDropdown.click();
-        await console.log("Exe-"+this.availabilityOptions.length);
     }
     async clickAvailabilityOption(index){
         await this.availabilityOptions[index].click();
@@ -26,8 +25,6 @@ class AvailabilityFilter extends Website {
         }
     }
     async executingCombinationRoute(selected){
-        //console.log(await this.availabilityOptions.isExisting());
-        console.log('Selecting Option Index: '+await selected);
         if(selected<await this.availabilityOptions.length-1){
             for(let afterSelected=selected+1;afterSelected<await this.availabilityOptions.length;afterSelected++){
                 await this.clickAvailabilityOption(afterSelected);
