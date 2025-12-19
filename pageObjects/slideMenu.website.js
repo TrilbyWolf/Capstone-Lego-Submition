@@ -86,5 +86,26 @@ class SlideMenu extends Website {
         }
         subLinks++;
     }
+    async exe(){
+        let headers=0;
+        do{
+            for(let links=0;links<7;links++){
+                await this.clickLink(headers,links);
+                links++;
+            }
+            if(headers<2){
+                let buttons=0;
+                do{
+                    let subLinks=0;
+                    do{
+                        await this.clickSubLink(headers,buttons,subLinks);
+                        subLinks++;
+                    }while(subLinks<await this.slideMenuSubLinks.length);
+                    buttons++;
+                }while(buttons<await this.slideMenuSubButtons.length);
+            }
+            headers++;
+        }while(headers<await this.headerButtons.length);
+    }
 }
 export default new SlideMenu();

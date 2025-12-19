@@ -9,8 +9,8 @@ class MainPage extends Website {
     get stateGateRejectButton(){
         return $('button#cookie-necessary-button');
     }
-    open(){
-        return super.open('');
+    exe_Lego(){
+        return super.exe_Lego('');
     }
     async bypassGates(){
         await this.ageGateAdultButton.click();

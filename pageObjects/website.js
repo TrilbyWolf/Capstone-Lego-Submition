@@ -1,5 +1,5 @@
 export default class Website{
-    open(){
+    exe_Lego(){
         return browser.url('https://lego.com/');
     }
 }
